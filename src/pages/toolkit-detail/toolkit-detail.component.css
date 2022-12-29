@@ -1,0 +1,43 @@
+.detail-wrapper {
+    width: 20%;
+    padding: 5px;
+}
+
+.detail-wrapper img {
+    border-radius: 5px;
+}
+
+.toolkit-detail-container {
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+}
+
+.toolkit-detail-filter-list {
+    border: 1px solid #acacac;
+    border-radius: 10px;
+    padding: 10px;
+    width: 20%;
+}
+
+.toolkit-container {
+    display: flex;
+}
+
+.toolkit-content {
+    display: flex;
+}
+
+.toolkit-title {
+    display: flex;
+    justify-content: flex-end;
+}
+
+mat-button-toggle-group {
+    margin-left: 12px;
+}
+
+.filter-title {
+    display: flex;
+    align-items: center;
+}

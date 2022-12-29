@@ -1,0 +1,52 @@
+<div class="employee-detail">
+    <div class="employee-detail-top">
+        <div class="employee-detail-1">
+            <h3>Employee</h3>
+            <p>Name</p>
+            <span>{{employee?.name!}}</span>
+            <p>Date Joined</p>
+            <span>12/11/2022</span>
+        </div>
+
+        <div class="employee-detail-2">
+            <br />
+            <b>Email</b>
+            <p>{{employee?.email!}}</p>
+            <mat-slide-toggle [(ngModel)]="status">{{status === true ? 'Available' : 'Not Available'}}</mat-slide-toggle>
+        </div>
+
+
+        <div class="employee-detail-3">
+            <h3>Address</h3>
+            <p>{{employee?.address!}}</p>
+        </div>
+    </div>
+
+    <div class="employee-detail-bottom">
+        <div class="employee-more-info">
+            <h3>Level</h3>
+            <mat-list>
+                <mat-list-item>{{employee?.levelId!}}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>Item 2</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>Item 3</mat-list-item>
+            </mat-list>
+        </div>
+
+        <div class="employee-more-info">
+            <h3>Department</h3>
+            <mat-list>
+                <mat-list-item>Item 1</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>Item 2</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>Item 3</mat-list-item>
+            </mat-list>
+        </div>
+    </div>
+    <div class="employee-button">
+        <button mat-raised-button color="accent"><mat-icon>save</mat-icon>Save</button>
+        <button mat-stroked-button color="warn"><mat-icon>delete</mat-icon>Delete</button>
+    </div>
+</div>

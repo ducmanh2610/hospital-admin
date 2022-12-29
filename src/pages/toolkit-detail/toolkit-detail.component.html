@@ -1,0 +1,60 @@
+<div class="toolkit-container">
+    <div class="toolkit-detail-filter-list">
+        <mat-form-field class="example-form-field">
+            <mat-label>Filter By</mat-label>
+            <input matInput type="text" placeholder="Enter keywords" [(ngModel)]="value">
+            <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+        <button mat-raised-button color="accent">Clear All</button>
+        <div class="filter-title"><mat-icon>list</mat-icon>
+            <h3>Toolkit Type</h3>
+        </div>
+        <mat-list>
+            <mat-selection-list #types [multiple]="false">
+                <mat-list-option *ngFor="let type of toolkitTypes" [value]="type">
+                    {{type}}
+                </mat-list-option>
+            </mat-selection-list>
+
+
+        </mat-list>
+        <div class="filter-title"><mat-icon>list</mat-icon>
+            <h3>Toolkit Info</h3>
+        </div>
+        <mat-list>
+            <mat-selection-list #infoTypes [multiple]="false">
+                <mat-list-option *ngFor="let infoType of toolkitInfoTypes" [value]="infoType">
+                    {{infoType}}
+                </mat-list-option>
+            </mat-selection-list>
+        </mat-list>
+    </div>
+    <div class="toolkit-detail-container">
+        <div class="toolkit-title">
+            <button mat-button [matMenuTriggerFor]="menu">
+                <div class="toolkit-sort">
+                    <mat-icon>filter</mat-icon>
+                    <span>Sort by:</span>
+                </div>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>Ascending</button>
+                <button mat-menu-item>Descending</button>
+            </mat-menu>
+
+            <button mat-raised-button color="accent">
+                <div class="toolkit-sort export">
+                    <mat-icon>filter</mat-icon>
+                    <span>Sort by:</span>
+                </div>
+            </button>
+        </div>
+        <div class="toolkit-content">
+            <div class="detail-wrapper" *ngFor="let toolkit of toolkitList">
+                <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="">
+            </div>
+        </div>
+    </div>
+</div>
