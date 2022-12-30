@@ -1,0 +1,84 @@
+    [
+        {
+            "nameOfJSON": "toolkit",
+            "name": "String",
+            "status": "int",
+            "description": "string",
+            "imageURL": "string",
+            "toolkit_type": {
+                "id": "string",
+                "name": "string",
+                "dateImported": "Date",
+                "dateModified": "Date",
+                "description": "string",
+                "status": "int"
+            }
+        },
+        {
+            "nameOfJSON": "toolkitType",
+            "name": "String",
+            "status": "int",
+            "description": "string",
+            "imageURL": "string",
+            "dateImported": "Date",
+            "dateModified": "Date"
+        },
+        {
+            "nameOfJSON": "toolkitType",
+            "name": "String",
+            "status": "int",
+            "description": "string",
+            "imageURL": "string",
+            "dateImported": "Date",
+            "dateModified": "Date"
+        },
+        {
+            "nameOfJSON": "toolkitType",
+            "name": "String",
+            "status": "int",
+            "description": "string",
+            "imageURL": "string",
+            "dateImported": "Date",
+            "dateModified": "Date"
+        },
+        {
+            "nameOfJSON": "record",
+            "title": "string",
+            "patient": {
+                "patient_id": "UUID",
+                "first_name": "string",
+                "last_name": "string",
+                "email": "string",
+                "date_of_birth": "Date",
+                "address": "string",
+                "phone_number": "number",
+                "date_joined": "Date",
+                "date_out": "Date",
+                "date_created": "Date",
+                "status": "boolean"
+            },
+            "employee": {
+                "employee_id": "UUID",
+                "first_name": "string",
+                "last_name": "string",
+                "level": {
+                    "level_id": "UUID",
+                    "name": "string",
+                    "date_created": "Date",
+                    "date_modified": "Date",
+                    "status": "boolean"
+                },
+                "email": "string",
+                "description": "string",
+                "date_of_birth": "Date",
+                "phone_number": "number",
+                "address": "Date",
+                "date_created": "Date",
+                "status": "boolean"
+            },
+            "status": "boolean",
+            "dieases": "string",
+            "dateImported": "Date",
+            "dateModified": "Date"
+        }
+    ]

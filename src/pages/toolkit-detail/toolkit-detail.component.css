@@ -41,3 +41,10 @@ mat-button-toggle-group {
     display: flex;
     align-items: center;
 }
+
+.button {
+    position: fixed;
+    bottom: 3%;
+    right: 3%;
+    z-index: 1;
+}

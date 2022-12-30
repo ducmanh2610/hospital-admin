@@ -53,8 +53,23 @@
         </div>
         <div class="toolkit-content">
             <div class="detail-wrapper" *ngFor="let toolkit of toolkitList">
-                <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="">
+                <mat-card class="example-card">
+                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+                        alt="Photo of a Shiba Inu">
+                    <mat-card-content>
+                        <p>
+                            {{toolkit.name}}
+                        </p>
+                    </mat-card-content>
+                </mat-card>
             </div>
         </div>
+    </div>
+</div>
+<div class="button">
+    <div class="example-button-container">
+        <button mat-fab color="accent" aria-label="Example icon button with a delete icon">
+            <mat-icon>add</mat-icon>
+        </button>
     </div>
 </div>

@@ -22,12 +22,12 @@ interface Filter {
 
 
 @Component({
-  selector: 'search-filter',
-  templateUrl: './doctor-list.component.html',
-  styleUrls: ['./doctor-list.component.css']
+  selector: 'app-employee-list',
+  templateUrl: './employee-list.component.html',
+  styleUrls: ['./employee-list.component.css']
 })
 
-export class DoctorListComponent implements AfterViewInit, OnInit {
+export class EmployeeListComponent implements AfterViewInit, OnInit {
   @ViewChild("viewContainerRef", { read: ViewContainerRef }) vcr!: ViewContainerRef;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;

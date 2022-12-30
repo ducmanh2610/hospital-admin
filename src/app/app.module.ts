@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
@@ -27,17 +28,18 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatMenuModule } from '@angular/material/menu';
 
 import { NavbarComponent } from 'src/layouts';
-import { DoctorListComponent, EmployeeDetailComponent, ToolkitDetailComponent, ToolkitListComponent } from 'src/pages';
+import { EmployeeDetailComponent, EmployeeListComponent, RecordListComponent, ToolkitDetailComponent, ToolkitListComponent } from 'src/pages';
 import { DateRangePickerComponent, DialogComponent, FitlerComponent, SelectFilterComponent } from 'src/components';
 import { AppRoutingModule } from './app-routing.module';
 import { MessagesComponent } from 'src/components/messages/messages.component';
 import { MatListModule } from '@angular/material/list';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    DoctorListComponent,
+    EmployeeListComponent,
     DialogComponent,
     FitlerComponent,
     SelectFilterComponent,
@@ -45,7 +47,8 @@ import { MatListModule } from '@angular/material/list';
     MessagesComponent,
     EmployeeDetailComponent,
     ToolkitListComponent,
-    ToolkitDetailComponent
+    ToolkitDetailComponent,
+    RecordListComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +56,10 @@ import { MatListModule } from '@angular/material/list';
     RouterModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    AppRoutingModule,
+
+
     MatTableModule,
     MatSortModule,
     MatSidenavModule,
@@ -74,7 +81,6 @@ import { MatListModule } from '@angular/material/list';
     MatCardModule,
     MatButtonToggleModule,
     MatMenuModule,
-    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

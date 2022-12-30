@@ -11,26 +11,27 @@
 
 <body>
   <app-navbar></app-navbar>
-  <mat-drawer-container class="example-container">
+  <mat-drawer-container class="container">
     <mat-drawer #drawer mode="side">
       <div class="main-menu">
         <a mat-button routerLink="">Dashboard</a>
-        <h3>Manager</h3>
+        <h3>Employee</h3>
         <a mat-button routerLink="employee-list">Employee List</a>
-        <a mat-button>Appointment List</a>
-        <a mat-button routerLink="toolkit-list">Toolkit List</a>
-        <a mat-button>Patient List</a>
+        <a mat-button routerLink="user-list">User List</a>
         <a mat-button routerLink="level-list">Level List</a>
+        <h3>Hospital Activities</h3>
+        <a mat-button routerLink="record-list">Record List</a>
+        <a mat-button routerLink="toolkit-list">Toolkit List</a>
+        <a mat-button routerLink="patient-list">Patient List</a>
         <h3>System</h3>
-        <a mat-button>User List</a>
-        <a mat-button>Log Activities</a>
-        <a mat-button>Email List</a>
+        <a mat-button routerLink="log">Log Activities</a>
+        <a mat-button routerLink="email-list">Email List</a>
         <h3>Report</h3>
-        <a mat-button>Overview</a>
+        <a mat-button routerLink="report">Overview</a>
       </div>
     </mat-drawer>
     <mat-drawer-content>
-      <div class="example-button-container">
+      <div class="button-container">
         <button mat-mini-fab mat-raised-button (click)="drawer.toggle()" color="primary"
           aria-label="Example icon button with a menu icon">
           <mat-icon>menu</mat-icon>
