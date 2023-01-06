@@ -1,10 +1,17 @@
+import { User, Level } from "./"
+
 export interface Employee {
-    position: number;
-    employeeId: string;
-    name: string;
-    levelId: string;
-    email: string;
-    description: string;
-    isAvailable: boolean;
-    address: string;
+    position?: Number,
+    id?: string,
+    name?: string,
+    firstName?: string,
+    lastName?: string,
+    email?: string,
+    description?: string,
+    status?: true,
+    address?: null,
+    dateImported?: Date,
+    dateModified?: Date,
+    user?: User,
+    level?: Level
 }

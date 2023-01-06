@@ -28,8 +28,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatMenuModule } from '@angular/material/menu';
 
 import { NavbarComponent } from 'src/layouts';
-import { EmployeeDetailComponent, EmployeeListComponent, RecordListComponent, ToolkitDetailComponent, ToolkitListComponent } from 'src/pages';
-import { DateRangePickerComponent, DialogComponent, FitlerComponent, SelectFilterComponent } from 'src/components';
+import { EmployeeDetailComponent, EmployeeListComponent, LevelListComponent, RecordListComponent, ToolkitDetailComponent, ToolkitListComponent } from 'src/pages';
+import { ConfirmDialogComponent, DateRangePickerComponent, DialogComponent, FitlerComponent, LevelDialogComponent, SelectFilterComponent } from 'src/components';
 import { AppRoutingModule } from './app-routing.module';
 import { MessagesComponent } from 'src/components/messages/messages.component';
 import { MatListModule } from '@angular/material/list';
@@ -39,16 +39,21 @@ import { MatListModule } from '@angular/material/list';
   declarations: [
     AppComponent,
     NavbarComponent,
+
     EmployeeListComponent,
     DialogComponent,
+    LevelDialogComponent,
     FitlerComponent,
     SelectFilterComponent,
     DateRangePickerComponent,
     MessagesComponent,
+    ConfirmDialogComponent,
+
     EmployeeDetailComponent,
     ToolkitListComponent,
     ToolkitDetailComponent,
-    RecordListComponent
+    RecordListComponent,
+    LevelListComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +63,6 @@ import { MatListModule } from '@angular/material/list';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-
 
     MatTableModule,
     MatSortModule,

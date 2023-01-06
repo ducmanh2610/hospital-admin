@@ -10,8 +10,9 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Employee } from 'src/models/employee';
-import { EmployeeService, MessagesService } from 'src/services';
+import { EmployeeService } from 'src/services';
 import { MatPaginator } from '@angular/material/paginator';
+import { tap } from 'rxjs';
 
 
 interface Filter {
@@ -19,7 +20,6 @@ interface Filter {
   viewValue: string;
   component: any
 }
-
 
 @Component({
   selector: 'app-employee-list',
@@ -33,9 +33,10 @@ export class EmployeeListComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   ref!: ComponentRef<FitlerComponent>
   selection = new SelectionModel<Employee>(true, []);
-  displayedColumns: string[] = ['select', 'employeeId', 'name', 'levelId', 'email', 'description', 'isAvailable', 'address', 'actions'];
+  displayedColumns: string[] = ['select', 'position', 'firstName', 'lastName', 'level', 'email', 'description', 'status', 'address', 'actions'];
   dataSource: any;
   employeeList: Employee[] = [];
+  employeeListWithPosition: any[] = [];
   filters: Filter[] = [
     { value: 'date-joined', viewValue: 'Date Joined', component: DateRangePickerComponent },
     { value: 'department', viewValue: 'Department', component: SelectFilterComponent },
@@ -55,13 +56,21 @@ export class EmployeeListComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit(): void {
-    this.employeeService.getEmployee().subscribe(employees => this.employeeList = employees);
-    this.dataSource = new MatTableDataSource(this.employeeList);
+    this.employeeService.getEmployeeList()
+      .pipe(
+        tap(response => {
+          response.forEach((response, index) => {
+            response['position'] = index + 1;
+          });
+        })
+      )
+      .subscribe(data => this.dataSource = new MatTableDataSource(data));
   }
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    console.log(this.dataSource);
   }
 
   announceSortChange(sortState: Sort) {
@@ -117,7 +126,7 @@ export class EmployeeListComponent implements AfterViewInit, OnInit {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: Employee): string {
+  checkboxLabel(row?: any): string {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }

@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>New Level</h2>
+<mat-dialog-content class="mat-typography">
+    <div [formGroup]="levelForm">
+        <div class="container">
+            <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Name" formControlName="name">
+            </mat-form-field>
+        </div>
+        <div class="container">
+            <mat-form-field appearance="fill">
+                <mat-label>Description</mat-label>
+                <textarea formControlName="description" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                    cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
+            </mat-form-field>
+        </div>
+        <div class="container">
+            <mat-slide-toggle formControlName="status">{{levelForm.value.status === true ? 'Available' : 'Not
+                Available'}}</mat-slide-toggle>
+        </div>
+    </div>
+    <mat-dialog-actions align="end">
+        <button mat-button [mat-dialog-close]="false">Cancel</button>
+        <button mat-button [mat-dialog-close]="levelForm.value" cdkFocusInitial>Save</button>
+    </mat-dialog-actions>
+</mat-dialog-content>
