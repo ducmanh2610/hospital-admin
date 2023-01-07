@@ -4,7 +4,6 @@ import {
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DateRangePickerComponent, DialogComponent, FitlerComponent, SelectFilterComponent } from 'src/components';
-
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -21,6 +20,43 @@ interface Filter {
   component: any
 }
 
+const DUMMY_DATA: Employee[] = [
+  {
+    position: 1,
+    id: "a3a50f95-384d-49e0-a6a8-01954a3ac8c7",
+    firstName: "Huyen Anh",
+    lastName: "Tran",
+    email: "ABC",
+    description: "co y ta damdang",
+    status: false,
+    level: {
+      id: "bd0c1378-6db7-4001-b71f-9ea73fa30fbf",
+      name: "Beauty Nurse",
+      status: true,
+      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt assumenda explicabo accusantium soluta neque laudantium cum repellendus dolor repellat vitae?",
+      dateImported: 1672807175000,
+      dateModified: 1672807175000,
+    }
+  },
+  {
+    position: 2,
+    id: "b3a50f95-384d-49e0-a6a8-01954a3ac8c7",
+    firstName: "Tien",
+    lastName: "Tran Thuy",
+    email: "ABC",
+    description: "co y ta damdang",
+    status: false,
+    level: {
+      id: "bd0c1378-6db7-4001-b71f-9ea73fa30fbf",
+      name: "Beauty Nurse",
+      status: true,
+      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt assumenda explicabo accusantium soluta neque laudantium cum repellendus dolor repellat vitae?",
+      dateImported: 1672807175000,
+      dateModified: 1672807175000,
+    }
+  }
+]
+
 @Component({
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
@@ -34,15 +70,15 @@ export class EmployeeListComponent implements AfterViewInit, OnInit {
   ref!: ComponentRef<FitlerComponent>
   selection = new SelectionModel<Employee>(true, []);
   displayedColumns: string[] = ['select', 'position', 'firstName', 'lastName', 'level', 'email', 'description', 'status', 'address', 'actions'];
-  dataSource: any;
-  employeeList: Employee[] = [];
-  employeeListWithPosition: any[] = [];
+  dataSource = new MatTableDataSource<Employee>();
+  data: any[];
+  length: Number;
+  emps: Employee[];
   filters: Filter[] = [
     { value: 'date-joined', viewValue: 'Date Joined', component: DateRangePickerComponent },
     { value: 'department', viewValue: 'Department', component: SelectFilterComponent },
     { value: 'email', viewValue: 'Email', component: FitlerComponent },
   ];
-
   selectedValue: string;
   selectedCar: string;
 
@@ -54,17 +90,17 @@ export class EmployeeListComponent implements AfterViewInit, OnInit {
   ) {
 
   }
-
-  ngOnInit(): void {
-    this.employeeService.getEmployeeList()
-      .pipe(
-        tap(response => {
-          response.forEach((response, index) => {
-            response['position'] = index + 1;
-          });
-        })
-      )
-      .subscribe(data => this.dataSource = new MatTableDataSource(data));
+  ngOnInit() {
+    this.employeeService.getEmployeeList().pipe(
+      tap(response => {
+        response.forEach((response, index) => {
+          response['position'] = index + 1;
+        });
+      })
+    )
+      .subscribe(data => {
+        this.dataSource.data = data
+      });
   }
 
   ngAfterViewInit(): void {
@@ -91,7 +127,8 @@ export class EmployeeListComponent implements AfterViewInit, OnInit {
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
-    const numSelected = this.selection.selected.length;
+    // console.log(this.dataSource);
+    const numSelected = this.dataSource.data.length;
     const numRows = this.dataSource.data.length;
     return numSelected === numRows;
   }

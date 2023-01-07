@@ -1,8 +1,8 @@
 export interface Level {
-    id?: Number;
+    id?: string;
     name?: string;
     status?: boolean;
     description?: string;
-    dateImported?: Date;
-    dateModified?: Date;
+    dateImported?: Number;
+    dateModified?: Number;
 }

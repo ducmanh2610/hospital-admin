@@ -10,7 +10,7 @@ const HTTP_API: string = "http://localhost:8081/api/v1/employee";
   providedIn: 'root'
 })
 export class EmployeeService {
-  employeeList: Observable<Employee[]>;
+  employeeList: Employee[];;
   constructor(private messagesService: MessagesService, private http: HttpClient) { }
 
   public getEmployeeList(): Observable<Employee[]> {

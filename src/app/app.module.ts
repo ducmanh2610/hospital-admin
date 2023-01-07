@@ -33,7 +33,7 @@ import { ConfirmDialogComponent, DateRangePickerComponent, DialogComponent, Fitl
 import { AppRoutingModule } from './app-routing.module';
 import { MessagesComponent } from 'src/components/messages/messages.component';
 import { MatListModule } from '@angular/material/list';
-
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   declarations: [
@@ -85,6 +85,7 @@ import { MatListModule } from '@angular/material/list';
     MatCardModule,
     MatButtonToggleModule,
     MatMenuModule,
+    QuillModule
   ],
   providers: [],
   bootstrap: [AppComponent]

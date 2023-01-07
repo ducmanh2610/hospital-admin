@@ -3,7 +3,7 @@
         <div class="employee-detail-1">
             <h3>Employee</h3>
             <p>Name</p>
-            <span>{{employee?.name!}}</span>
+            <span>{{employee?.firstName!}} {{employee?.lastName!}}</span>
             <p>Date Joined</p>
             <span>12/11/2022</span>
         </div>
@@ -12,7 +12,8 @@
             <br />
             <b>Email</b>
             <p>{{employee?.email!}}</p>
-            <mat-slide-toggle [(ngModel)]="status">{{status === true ? 'Available' : 'Not Available'}}</mat-slide-toggle>
+            <mat-slide-toggle [(ngModel)]="status">{{status === true ? 'Available' : 'Not
+                Available'}}</mat-slide-toggle>
         </div>
 
 
@@ -24,18 +25,33 @@
 
     <div class="employee-detail-bottom">
         <div class="employee-more-info">
-            <h3>Level</h3>
+            <h3>Employee with same Level</h3>
             <mat-list>
-                <mat-list-item>{{employee?.level?.name!}}</mat-list-item>
+                <div class="employee-related">
+                    <mat-list-item>
+                        <div class="employee-row">
+                            <div class="employee-name">
+                                {{employee?.level?.name!}}
+                            </div>
+                            <div class="employee-related-icon">
+                                <button mat-icon-button color="accent"
+                                    aria-label="Example icon button with a home icon">
+                                    <mat-icon>visibility</mat-icon>
+                                </button>
+                                <button mat-icon-button color="warn"
+                                    aria-label="Example icon button with a home icon">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </mat-list-item>
+                </div>
                 <mat-divider></mat-divider>
-                <mat-list-item>Item 2</mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item>Item 3</mat-list-item>
             </mat-list>
         </div>
 
         <div class="employee-more-info">
-            <h3>Department</h3>
+            <h3>Department Related</h3>
             <mat-list>
                 <mat-list-item>Item 1</mat-list-item>
                 <mat-divider></mat-divider>

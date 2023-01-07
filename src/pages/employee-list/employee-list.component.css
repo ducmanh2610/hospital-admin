@@ -27,6 +27,7 @@ th.mat-sort-header-sorted {
 .title-left {
     display: flex;
     justify-content: space-between;
+    width: 70%;
 }
 
 .action-row button {
