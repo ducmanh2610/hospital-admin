@@ -1,0 +1,32 @@
+<div *ngIf="isLoading" class="loader"><mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar>
+</div>
+<div class="form-wrapper">
+    <form [formGroup]="form" (submit)="login()">
+        <div [ngClass]="{'login-form_faded': isLoading, 'login-form': !isLoading}">
+            <div class="login-title">
+                <img src="favicon.ico">
+                <span>Hospital Admin</span>
+            </div>
+            <h1>Login</h1>
+            <mat-form-field appearance="outline">
+                <mat-label>Username</mat-label>
+                <input matInput placeholder="Username" name="username" formControlName="username" type="text"
+                    [readonly]="isLoading">
+                <mat-icon matSuffix>person</mat-icon>
+                <mat-error *ngIf="form.invalid || username.invalid && username.touched">Username is
+                    required.</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput placeholder="Password" name="password" formControlName="password" type="password"
+                    [readonly]="isLoading">
+                <mat-icon matSuffix>key</mat-icon>
+                <mat-error *ngIf="form.invalid || password.invalid && password.touched">Password is
+                    required.</mat-error>
+            </mat-form-field>
+            <button mat-raised-button type="submit" color="accent" [disabled]="isLoading">Login</button>
+            <button mat-stroked-button type="button" color="accent" [disabled]="isLoading">Register</button>
+            <mat-error *ngIf="loginError">Username or Password is incorrect.</mat-error>
+        </div>
+    </form>
+</div>

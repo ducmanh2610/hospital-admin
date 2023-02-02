@@ -6,6 +6,9 @@ import { ToolkitType } from "./toolkit-type";
 import { Level } from "./level";
 import { User } from "./user";
 import { Roles } from "./roles";
+import { Login } from "./login";
+import { Token } from "./token";
+import { Payload } from "./payload";
 
 export {
     Employee,
@@ -15,5 +18,8 @@ export {
     ToolkitType,
     Level,
     User,
-    Roles
+    Roles,
+    Login,
+    Token,
+    Payload
 }

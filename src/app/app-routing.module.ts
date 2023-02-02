@@ -1,24 +1,40 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Route, Routes } from '@angular/router';
 import { DashboardComponent, EmployeeListComponent, EmployeeDetailComponent, LevelListComponent, RecordListComponent, ToolkitDetailComponent, ToolkitListComponent, UserListComponent, PatientListComponent, LogComponent } from 'src/pages';
+import { LoginComponent } from 'src/auth/login/login/login.component';
+import { AuthLayoutComponent, DefaultLayoutComponent } from 'src/layouts';
+import { RegisterComponent } from 'src/auth/register/register/register.component';
+import { AuthorizeService } from 'src/services/authorize/authorize.service';
 
 const routes: Routes = [
-  { path: "", component: DashboardComponent, title: 'Dashboard' },
-  { path: "level-list", component: LevelListComponent, title: 'Employee Level List' },
-
-  { path: "employee-list", component: EmployeeListComponent, title: "Employee List" },
-  { path: "employee/:employeeId", component: EmployeeDetailComponent, title: "Employee Detail" },
-
-  { path: "toolkit-list", component: ToolkitListComponent, title: 'Toolkit List' },
-  { path: "toolkit-detail/:toolTypeId", component: ToolkitDetailComponent, title: `Type List` },
-
-  { path: "user-list", component: UserListComponent, title: 'User List' },
-  { path: "record-list", component: RecordListComponent, title: 'Record List' },
-  { path: "patient-list", component: PatientListComponent, title: 'Patient List' },
-  { path: "log", component: LogComponent, title: 'System Log' },
-
-  { path: "report", component: RecordListComponent, title: 'Overview' },
+  {
+    path: 'auth',
+    component: AuthLayoutComponent,
+    children: [
+      { path: 'login', component: LoginComponent, title: 'Login' },
+      { path: 'register', component: RegisterComponent, title: 'Register' }
+    ]
+  },
+  {
+    path: '',
+    component: DefaultLayoutComponent, canActivate: [AuthorizeService],
+    children: [
+      { path: '', component: DashboardComponent, title: 'Dashboard' },
+      { path: 'users', component: UserListComponent, title: 'Users List' },
+      { path: 'employees', component: EmployeeListComponent, title: 'Employee List' },
+      { path: 'levels', component: LevelListComponent, title: 'Level List' },
+    ]
+  },
+  {
+    path: 'error',
+    component: DefaultLayoutComponent, canActivate: [AuthorizeService],
+    children: [
+      { path: '404', component: DashboardComponent, title: 'Page Not Found' },
+      { path: '403', component: UserListComponent, title: 'Forbidden' },
+      { path: '500', component: UserListComponent, title: 'Internal Server Error' },
+    ]
+  },
 ]
 
 @NgModule({

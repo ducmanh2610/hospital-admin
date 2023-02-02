@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
@@ -26,19 +26,25 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
-import { NavbarComponent } from 'src/layouts';
+import { AuthLayoutComponent, DefaultLayoutComponent, NavbarComponent } from 'src/layouts';
 import { EmployeeDetailComponent, EmployeeListComponent, LevelListComponent, RecordListComponent, ToolkitDetailComponent, ToolkitListComponent } from 'src/pages';
 import { ConfirmDialogComponent, DateRangePickerComponent, DialogComponent, FitlerComponent, LevelDialogComponent, SelectFilterComponent } from 'src/components';
 import { AppRoutingModule } from './app-routing.module';
 import { MessagesComponent } from 'src/components/messages/messages.component';
 import { MatListModule } from '@angular/material/list';
 import { QuillModule } from 'ngx-quill';
+import { LoginComponent } from 'src/auth/login/login/login.component';
+import { CommonModule } from '@angular/common';
+import { AuthInterceptor } from 'src/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
+    AuthLayoutComponent,
+    DefaultLayoutComponent,
 
     EmployeeListComponent,
     DialogComponent,
@@ -53,7 +59,8 @@ import { QuillModule } from 'ngx-quill';
     ToolkitListComponent,
     ToolkitDetailComponent,
     RecordListComponent,
-    LevelListComponent
+    LevelListComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -63,8 +70,10 @@ import { QuillModule } from 'ngx-quill';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
+    CommonModule,
 
     MatTableModule,
+    MatProgressBarModule,
     MatSortModule,
     MatSidenavModule,
     MatToolbarModule,
@@ -87,7 +96,11 @@ import { QuillModule } from 'ngx-quill';
     MatMenuModule,
     QuillModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

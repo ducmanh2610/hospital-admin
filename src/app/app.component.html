@@ -6,42 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <title>Table</title>
+  <title>Hospital Admin</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 
 <body>
-  <app-navbar></app-navbar>
-  <mat-drawer-container class="container">
-    <mat-drawer #drawer mode="side">
-      <div class="main-menu">
-        <a mat-button routerLink="">Dashboard</a>
-        <h3>Employee</h3>
-        <a mat-button routerLink="employee-list">Employee List</a>
-        <a mat-button routerLink="user-list">User List</a>
-        <a mat-button routerLink="level-list">Level List</a>
-        <h3>Hospital Activities</h3>
-        <a mat-button routerLink="record-list">Record List</a>
-        <a mat-button routerLink="toolkit-list">Toolkit List</a>
-        <a mat-button routerLink="patient-list">Patient List</a>
-        <h3>System</h3>
-        <a mat-button routerLink="log">Log Activities</a>
-        <a mat-button routerLink="email-list">Email List</a>
-        <h3>Report</h3>
-        <a mat-button routerLink="report">Overview</a>
-      </div>
-    </mat-drawer>
-    <mat-drawer-content>
-      <div class="button-container">
-        <button mat-mini-fab mat-raised-button (click)="drawer.toggle()" color="primary"
-          aria-label="Example icon button with a menu icon">
-          <mat-icon>menu</mat-icon>
-        </button>
-      </div>
-      <div class="main-content">
-        <router-outlet></router-outlet>
-      </div>
-    </mat-drawer-content>
-  </mat-drawer-container>
+  <router-outlet></router-outlet>
 </body>
 
 </html>

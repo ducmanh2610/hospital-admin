@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MatIcon } from '@angular/material/icon';
+import { LocalService } from 'src/services/local-storage/local.service';
+import { Output, EventEmitter } from '@angular/core';
+import { AuthenticateService } from 'src/services/authenticate/authenticate.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,10 +9,21 @@ import { MatIcon } from '@angular/material/icon';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
-  constructor() { }
+  username: string;
+  constructor(private localService: LocalService, private authService: AuthenticateService) { }
+  @Output() sidebarStatus = new EventEmitter<boolean>();
+  status: boolean = false;
 
   ngOnInit(): void {
+    this.username = this.localService.getData('username');
   }
 
+  public toggleSidebar(): void {
+    this.status = !this.status;
+    this.sidebarStatus.emit(this.status);
+  }
+
+  public logout(): void {
+    this.authService.logout();
+  }
 }

@@ -5,7 +5,6 @@ export interface Employee {
     id?: string,
     firstName?: string,
     lastName?: string,
-    email?: string,
     description?: string,
     status?: boolean,
     address?: boolean,

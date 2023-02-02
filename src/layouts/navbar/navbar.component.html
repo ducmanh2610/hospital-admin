@@ -1,5 +1,5 @@
 <mat-toolbar class="mat-elevation-z8">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <button mat-icon-button class="example-icon" (click)="toggleSidebar()" aria-label="Toggle Sidebar">
         <mat-icon>menu</mat-icon>
     </button>
     <span>Hospital Admin</span>
@@ -8,5 +8,6 @@
     <a mat-button>Appointment List</a>
     <a mat-button>Dispose List</a>
     <a mat-button>Report</a>
-    <a mat-raised-button color="accent">Welcome, <b>Admin</b></a>
+    <a mat-raised-button color="accent"> Welcome, <b>{{username}}</b></a>
+    <a mat-button (click)="logout()">Logout</a>
 </mat-toolbar>
